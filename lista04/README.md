@@ -1,14 +1,14 @@
-# Lista 04 — CSS: Flexbox (parte 2)
+# Lista 04 — Flexbox (parte 2)
 
-## 4. Tamanho de partida e atalho `flex`
+## 4. Tamanho inicial e atalho `flex`
 
 **13. O que é o `flex-basis`? Se um item tem `width: 200px` e `flex-basis: 10rem`, qual medida vale como tamanho de partida?**
 
-O `flex-basis` define o tamanho inicial do item no eixo principal. Nesse caso, vale o `flex-basis: 10rem`, pois ele tem prioridade sobre o `width` no cálculo do Flexbox.
+O `flex-basis` define o tamanho inicial do item no eixo principal. Nesse exemplo, vale o `flex-basis: 10rem`, que é usado pelo Flexbox no lugar do `width`.
 
 **14. Por que usar `flex-basis: 0` faz o `flex-grow` repartir a faixa inteira, e não só a sobra?**
 
-Porque os itens começam com tamanho zero. Assim, todo o espaço disponível na faixa fica como sobra para ser distribuída pelo `flex-grow`.
+Porque os itens começam com tamanho zero. Assim, o espaço disponível fica para ser dividido pelo `flex-grow`.
 
 **15. Preencha a tabela com os valores equivalentes de cada atalho (crescimento, encolhimento e base):**
 
@@ -21,24 +21,24 @@ Porque os itens começam com tamanho zero. Assim, todo o espaço disponível na 
 
 **16. Dois itens, de conteúdo 100px e 300px, numa faixa de 600px. Calcule a largura final de cada um com `flex: 1` e depois com `flex: auto`. Por que os resultados diferem?**
 
-- **Com `flex: 1`:** os dois itens começam com base zero. Como têm o mesmo peso de crescimento, dividem os 600px igualmente: **300px para cada um**.
-- **Com `flex: auto`:** as bases são 100px e 300px. A soma é 400px, então sobram 200px. Cada item recebe mais 100px: o primeiro fica com **200px** e o segundo com **400px**.
+- Com `flex: 1`, os dois começam com base zero e dividem os 600px igualmente: **300px para cada um**.
+- Com `flex: auto`, as bases são 100px e 300px. Sobram 200px, que são divididos entre os dois. No final, ficam **200px e 400px**.
 
-Os resultados diferem porque `flex: 1` usa base zero, enquanto `flex: auto` usa o tamanho do conteúdo como base.
+A diferença é que `flex: 1` começa do zero, enquanto `flex: auto` considera o tamanho do conteúdo como base.
 
 **17. Verdadeiro ou falso? Justifique. “`flex: 1` e `flex: auto` sempre dão o mesmo resultado quando os itens têm o mesmo conteúdo.”**
 
-Verdadeiro, considerando itens com o mesmo conteúdo e as mesmas condições. Como as bases automáticas são iguais e os pesos de crescimento também, os dois atalhos acabam distribuindo o espaço igualmente entre eles.
+Verdadeiro, considerando que os itens tenham o mesmo conteúdo e as mesmas condições. Nesse caso, as bases ficam iguais e os dois atalhos distribuem o espaço da mesma forma.
 
-## 5. O mínimo que trava o encolhimento
+## 5. O mínimo que impede o encolhimento
 
 **18. Um item tem `flex-shrink: 1` e mesmo assim estoura a faixa por causa de uma palavra muito longa. Qual propriedade padrão está segurando o item e qual ajuste a solta?**
 
-A propriedade é `min-width: auto`, que é o valor padrão dos itens flex e pode impedir que eles fiquem menores que o conteúdo. O ajuste é colocar `min-width: 0` no item.
+É o `min-width: auto`, que pode impedir o item de ficar menor que o conteúdo. Para resolver, basta usar `min-width: 0`.
 
 **19. Em que situação você esperaria ver esse problema ao montar um miolo com menu e texto?**
 
-Quando o texto tiver uma palavra, um link ou uma linha de código muito longa e não puder quebrar. Isso pode fazer a área do texto ultrapassar o espaço disponível e empurrar o menu.
+Quando o texto tiver uma palavra, um link ou uma linha de código muito longa que não consiga quebrar. Isso pode fazer o conteúdo passar do espaço disponível e empurrar o menu.
 
 ## 6. `order` e `align-self`
 
@@ -62,23 +62,23 @@ Quando o texto tiver uma palavra, um link ou uma linha de código muito longa e 
 }
 ```
 
-**a)** A ordem na tela será **C, A, B**, porque o item C recebeu `order: -1`.
+**a)** Na tela, a ordem será **C, A, B**, porque o item C recebeu `order: -1`.
 
-**b)** A ordem de foco ao apertar Tab continuará sendo **A, B, C**, seguindo a ordem dos elementos no HTML.
+**b)** A ordem do foco ao apertar Tab continua sendo **A, B, C**, pois segue a ordem dos elementos no HTML.
 
-**c)** Isso importa porque leitores de tela normalmente seguem a ordem do HTML. Se a ordem visual for diferente, a leitura pode ficar confusa para quem usa tecnologias assistivas.
+**c)** Isso é importante para a acessibilidade, porque leitores de tela normalmente seguem a ordem do HTML. Se a ordem visual for diferente, a leitura pode ficar confusa.
 
 **21. Qual é o valor padrão de `order`? Entre `order: -1` e `order: 2`, quem aparece primeiro?**
 
-O valor padrão é `0`. O item com `order: -1` aparece primeiro, porque tem o menor valor.
+O valor padrão é `0`. O item com `order: -1` aparece primeiro, pois tem o menor valor.
 
 **22. O pai tem `align-items: stretch`. O que acontece com um filho com `align-self: flex-end`? E com `align-self: auto`?**
 
-Com `align-self: flex-end`, o filho fica alinhado ao final do eixo transversal e deixa de esticar. Com `align-self: auto`, ele usa o valor de `align-items` do pai; nesse caso, continua com `stretch`.
+Com `align-self: flex-end`, o filho fica no final do eixo transversal e não estica. Com `align-self: auto`, ele segue o `align-items` do pai e continua com `stretch`.
 
 **23. Quando usar `align-self` e quando usar `align-items`?**
 
-Uso `align-items` para alinhar todos os itens do contêiner de uma vez. Uso `align-self` quando quero mudar o alinhamento de apenas um item.
+Uso `align-items` para alinhar todos os itens de uma vez. Já o `align-self` serve para mudar o alinhamento de apenas um item.
 
 ## 7. A página com miolo
 
@@ -89,7 +89,7 @@ Uso `align-items` para alinhar todos os itens do contêiner de uma vez. Uso `ali
 
 **25. Por que `.miolo` precisa ter `display: flex` além de ser item de `.pagina`?**
 
-Porque ser item de `.pagina` controla o tamanho e a posição do próprio `.miolo`, mas não organiza seus elementos internos. O `display: flex` faz o `aside` e o `main` ficarem lado a lado.
+Porque ser item de `.pagina` organiza o próprio `.miolo`, mas não os elementos que estão dentro dele. O `display: flex` organiza o `aside` e o `main lado a lado.
 
 **26. Explique a função de cada declaração:**
 
@@ -115,26 +115,26 @@ main {
 }
 ```
 
-- `.pagina`: transforma a página em um contêiner flexível, organiza os elementos em coluna e garante pelo menos a altura da tela.
-- `.miolo`: também vira um contêiner flexível e cresce para ocupar o espaço livre entre o topo e o rodapé.
-- `aside`: fica com base de `10rem`, sem crescer nem encolher.
-- `main`: cresce para ocupar o espaço restante. O `min-width: 0` permite que ele encolha quando necessário, evitando que o conteúdo ultrapasse a faixa.
+- `.pagina`: organiza os elementos em coluna e ocupa pelo menos a altura da tela.
+- `.miolo`: organiza seus elementos com Flexbox e cresce para ocupar o espaço livre.
+- `aside`: mantém a base de 10rem, sem crescer nem encolher.
+- `main`: ocupa o espaço que sobra. O `min-width: 0` permite que ele encolha quando precisar.
 
-## 8. Erros comuns e síntese
+## 8. Erros comuns e resumo
 
 **27. Um colega escreveu `flex-grow: 1` no contêiner e diz que não funciona. Qual é o erro e qual a correção?**
 
-O erro é colocar `flex-grow` no contêiner. Essa propriedade deve ser colocada nos itens que estão dentro dele. A correção é usar `display: flex` no pai e `flex-grow: 1` no filho que deve crescer.
+O erro é colocar `flex-grow` no contêiner. Essa propriedade deve ficar no item que precisa crescer. No pai, uso `display: flex`; no filho, `flex-grow: 1`.
 
 **28. Cite duas formas de resolver um item que estoura a faixa e explique quando cada uma é indicada.**
 
-1. Usar `min-width: 0` no item flex, quando ele precisa poder encolher para caber no espaço disponível.
-2. Usar `overflow-wrap: anywhere` no texto, quando uma palavra ou um link muito longo precisa quebrar linha para não ultrapassar o contêiner.
+1. Usar `min-width: 0` no item flex, para permitir que ele encolha.
+2. Usar `overflow-wrap: anywhere` no texto, quando uma palavra ou um link muito longo precisa quebrar linha.
 
 **29. Monte um resumo de uma frase para cada propriedade: `flex-basis`, `flex-grow`, `flex-shrink`, `order` e `align-self`.**
 
-- `flex-basis`: define o tamanho inicial do item no eixo principal.
-- `flex-grow`: define quanto o item pode crescer para ocupar o espaço que sobra.
-- `flex-shrink`: define quanto o item pode encolher quando falta espaço.
-- `order`: altera a ordem visual dos itens flex na tela.
-- `align-self`: define o alinhamento de um item individual no eixo transversal.
+- `flex-basis`: define o tamanho inicial do item.
+- `flex-grow`: define quanto o item pode crescer.
+- `flex-shrink`: define quanto o item pode encolher.
+- `order`: muda a ordem visual dos itens.
+- `align-self`: muda o alinhamento de um item específico.
