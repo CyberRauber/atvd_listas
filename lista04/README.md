@@ -89,7 +89,7 @@ Uso `align-items` para alinhar todos os itens de uma vez. Já o `align-self` ser
 
 **25. Por que `.miolo` precisa ter `display: flex` além de ser item de `.pagina`?**
 
-Porque ser item de `.pagina` organiza o próprio `.miolo`, mas não os elementos que estão dentro dele. O `display: flex` organiza o `aside` e o `main lado a lado.
+Porque ser item de `.pagina` organiza o próprio `.miolo`, mas não os elementos que estão dentro dele. O `display: flex` organiza o `aside` e o `main` lado a lado.
 
 **26. Explique a função de cada declaração:**
 
